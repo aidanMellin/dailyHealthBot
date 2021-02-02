@@ -16,13 +16,11 @@ def main():
     :rtype:
     '''
     credList = []
-    with open("secrets.txt") as fd:
-        for line in fd:
-            line = line.strip()
-            if '//' in line:
+    with open("secrets.txt","r") as fd:
+        if "//" in fd.readline():
                 lf.mainloop()
 
-    with open("secrets.txt") as fd:
+    with open("secrets.txt","r") as fd:
         for line in fd:
             line = line.strip().split()
             credList.append(line[2].replace('"',''))
@@ -265,9 +263,8 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
 
 if __name__ == '__main__':
     while True:
-        with open("secrets.txt") as fd:
-            for line in fd:
-                if "//" in line.strip():
+        with open("secrets.txt","r+") as fd:
+            if "//" in fd.readline():
                     root = Tk()
                     lf = LoginFrame(root)
         main()
