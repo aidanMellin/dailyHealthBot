@@ -57,7 +57,7 @@ class healthBot(object):
 
         #should probably add the time check here. incorporate progress bar as well?
         for _ in range(60*60*24):  # loop the hole day
-            if dt.datetime.now().hour == 8:  # 24 hour format
+            if dt.datetime.now().hour == 13:  # 24 hour format
                 print("Running Daily Health Screen")
                 break
             else:
