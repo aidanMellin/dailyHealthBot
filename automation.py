@@ -12,8 +12,6 @@ def main():
     '''
     Check if user has already entered their account information. If not, open the pane for entering info, otherwise,
     run automation
-    :return:
-    :rtype:
     '''
     credList = []
     with open("secrets.txt","r") as fd:
@@ -146,7 +144,6 @@ class LoginFrame(Frame):
         '''
         Initialize entire window, name it, and give the user entry fields for new account information
         :param master:
-        :type master:
         '''
         super().__init__(master)
 
