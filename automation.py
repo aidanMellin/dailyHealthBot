@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
-def main():
+def main(run_now):
     '''
     Check if user has already entered their account information. If not, open the pane for entering info, otherwise,
     run automation
@@ -22,11 +22,11 @@ def main():
         for line in fd:
             line = line.strip().split()
             credList.append(line[2].replace('"',''))
-        healthBot(credList[0],credList[1],credList[2])
+        healthBot(credList[0],credList[1],credList[2], run_now)
 
 class healthBot(object):
 
-    def __init__(self,username,password,browser):
+    def __init__(self,username,password,browser, run_now):
         """
         init function for overall class establishing base rules for window as well as driver
         :param username:
@@ -35,15 +35,14 @@ class healthBot(object):
         :type password:
         """
         super().__init__()
-
         self.username = username
         self.password = password
         self.browser = browser
         self.browser_options = Options()
         self.browser_options.add_experimental_option("detach", True)  # Make it so the browser doesn't close upon finish
-        self._run()
+        self._run(run_now)
 
-    def _run(self):
+    def _run(self, run_now):
         """
         Boot the window, and start login (Separated in case I should implement a GUI pane)
         :return:
@@ -264,7 +263,7 @@ if __name__ == '__main__':
             if "//" in fd.readline():
                     root = Tk()
                     lf = LoginFrame(root)
-        main()
+        main(False)
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
             sleep(864) #Progress bar fills by 1% every 864 seconds (86400 in a day)
