@@ -68,7 +68,7 @@ class healthBot(object):
             self.driver = webdriver.Safari()
         elif self.browser == "Firefox":
             ffOP = webdriver.FirefoxOptions()
-            #ffOP.set_headless()
+            ffOP.set_headless()
             self.driver = webdriver.Firefox(firefox_options = ffOP)
         elif self.browser == "Opera":
             self.driver = webdriver.Opera()
