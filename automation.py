@@ -269,7 +269,7 @@ if __name__ == '__main__':
             if "//" in fd.readline():
                     root = Tk()
                     lf = LoginFrame(root)
-        print("Run Now = "+run_now)
+        print("Run Now =",run_now)
         main(sys.argv[1])
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
