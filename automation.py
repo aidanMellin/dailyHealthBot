@@ -52,7 +52,6 @@ class healthBot(object):
         """
         ffOP = None
         #should probably add the time check here. incorporate progress bar as well?
-        print("Checking to run now\nRun now parameter =",type(run_now),"with value:",run_now)
         if not run_now:
             for _ in range(60*60*24):  # loop the whole day
                 if dt.datetime.now().hour == 8:  # 24 hour format
@@ -262,6 +261,7 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
 
 if __name__ == '__main__':
     run_now = bool(sys.argv[1].title())
+    print("Checking to run now\nRun now parameter =",type(run_now),"with value:",run_now)
     while True:
         with open("secrets.txt","r+") as fd:
             if "//" in fd.readline():
