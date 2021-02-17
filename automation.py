@@ -23,7 +23,7 @@ def main(run_now):
         for line in fd:
             line = line.strip().split()
             credList.append(line[2].replace('"',''))
-        healthBot(credList[0],credList[1],credList[2], run_now)
+        healthBot(credList[0],credList[1],credList[2], bool(run_now.title()))
 
 class healthBot(object):
 
@@ -52,6 +52,7 @@ class healthBot(object):
         ffOP = None
 
         #should probably add the time check here. incorporate progress bar as well?
+        print("Checking to run now\nRun now parameter =",type(run_now),"with value:",run_now)
         if not run_now:
             for _ in range(60*60*24):  # loop the whole day
                 if dt.datetime.now().hour == 8:  # 24 hour format
