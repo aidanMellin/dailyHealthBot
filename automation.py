@@ -53,13 +53,14 @@ class healthBot(object):
         ffOP = None
         #should probably add the time check here. incorporate progress bar as well?
         
-        for _ in range(60*60*24):  # loop the whole day
-            if dt.datetime.now().hour == 11:  # 24 hour format
-                print("Running Daily Health Screen")
-                break
-            else:
-                print("Not time yet, waiting for 30 minutes before checking again")
-            sleep(60*30)
+        if not run_now:
+            for _ in range(60*60*24):  # loop the whole day
+                if dt.datetime.now().hour == 11:  # 24 hour format
+                    print("Running Daily Health Screen")
+                    break
+                else:
+                    print("Not time yet, waiting for 30 minutes before checking again")
+                sleep(60*30)
 
         if self.browser == "Chrome":
             self.driver = webdriver.Chrome(options=self.browser_options)
@@ -260,7 +261,7 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
     print()
 
 if __name__ == '__main__':
-    if len(sys.argv) > 2:
+    if len(sys.argv) > 1 :
         if "True" in sys.argv[1].title():
             run_now = True
         else:
