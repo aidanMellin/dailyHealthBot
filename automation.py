@@ -1,8 +1,9 @@
 from datetime import date
 import datetime as dt
 from time import sleep
-from tkinter import *
+import sys
 
+from tkinter import *
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
@@ -51,13 +52,14 @@ class healthBot(object):
         ffOP = None
 
         #should probably add the time check here. incorporate progress bar as well?
-        for _ in range(60*60*24):  # loop the whole day
-            if dt.datetime.now().hour == 8:  # 24 hour format
-                print("Running Daily Health Screen")
-                break
-            else:
-                print("Not time yet, waiting for 30 minutes before checking again")
-            sleep(60*30)
+        if not run_now:
+            for _ in range(60*60*24):  # loop the whole day
+                if dt.datetime.now().hour == 8:  # 24 hour format
+                    print("Running Daily Health Screen")
+                    break
+                else:
+                    print("Not time yet, waiting for 30 minutes before checking again")
+                sleep(60*30)
 
         if self.browser == "Chrome":
             self.driver = webdriver.Chrome(options=self.browser_options)
@@ -263,7 +265,7 @@ if __name__ == '__main__':
             if "//" in fd.readline():
                     root = Tk()
                     lf = LoginFrame(root)
-        main(False)
+        main(sys.argv[1])
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
             sleep(864) #Progress bar fills by 1% every 864 seconds (86400 in a day)
