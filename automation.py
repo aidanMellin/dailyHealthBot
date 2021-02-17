@@ -261,12 +261,13 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
 
 if __name__ == '__main__':
     run_now = bool(sys.argv[1].title())
-    print("Checking to run now\nRun now parameter =",type(run_now),"with value:",run_now)
+    
     while True:
         with open("secrets.txt","r+") as fd:
             if "//" in fd.readline():
                     root = Tk()
                     lf = LoginFrame(root)
+        print("Checking to run now\nRun now parameter =",type(run_now),"with value:",run_now)
         main(sys.argv[1])
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
