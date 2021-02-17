@@ -68,7 +68,7 @@ class healthBot(object):
             self.driver = webdriver.Safari()
         elif self.browser == "Firefox":
             ffOP = webdriver.FirefoxOptions()
-            ffOP.set_headless()
+            #ffOP.set_headless()
             self.driver = webdriver.Firefox(firefox_options = ffOP)
         elif self.browser == "Opera":
             self.driver = webdriver.Opera()
@@ -273,7 +273,7 @@ if __name__ == '__main__':
             if "//" in fd.readline():
                     root = Tk()
                     lf = LoginFrame(root)
-        main(sys.argv[1])
+        main(run_now)
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
             sleep(864) #Progress bar fills by 1% every 864 seconds (86400 in a day)
