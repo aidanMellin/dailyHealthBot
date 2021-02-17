@@ -260,8 +260,11 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
     print()
 
 if __name__ == '__main__':
-    if "True" in sys.argv[1].title():
-        run_now = True
+    if len(sys.argv) > 1:
+        if "True" in sys.argv[1].title():
+            run_now = True
+        else:
+            run_now = False
     else:
         run_now = False
     while True:
