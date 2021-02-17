@@ -23,7 +23,7 @@ def main(run_now):
         for line in fd:
             line = line.strip().split()
             credList.append(line[2].replace('"',''))
-        healthBot(credList[0],credList[1],credList[2], bool(run_now.title()))
+        healthBot(credList[0],credList[1],credList[2], run_now)
 
 class healthBot(object):
 
@@ -79,7 +79,7 @@ class healthBot(object):
 
     def login(self):
         """
-        logs in using RIT credentials
+        logs in using RIT credentials   
         """
         self.driver.get('https://dailyhealth.rit.edu/')
         print("Navigating to dailyhealth.rit.edu\n")
@@ -261,6 +261,7 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
     print()
 
 if __name__ == '__main__':
+    run_now = bool(sys.argv[1].title())
     while True:
         with open("secrets.txt","r+") as fd:
             if "//" in fd.readline():
@@ -270,3 +271,4 @@ if __name__ == '__main__':
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
             sleep(864) #Progress bar fills by 1% every 864 seconds (86400 in a day)
+        run_now = False
