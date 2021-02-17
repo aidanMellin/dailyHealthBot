@@ -35,6 +35,7 @@ class healthBot(object):
         :param password:
         :type password:
         """
+        print("Initializing variables")
         super().__init__()
         self.username = username
         self.password = password
@@ -50,7 +51,6 @@ class healthBot(object):
         :rtype:
         """
         ffOP = None
-
         #should probably add the time check here. incorporate progress bar as well?
         print("Checking to run now\nRun now parameter =",type(run_now),"with value:",run_now)
         if not run_now:
