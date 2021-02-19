@@ -274,7 +274,7 @@ if __name__ == '__main__':
                     root = Tk()
                     lf = LoginFrame(root)
         main(run_now)
-        items = list(range(0, 100)) #List of numbers for counting for progress bar
-        for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
-            sleep(864) #Progress bar fills by 1% every 864 seconds (86400 in a day)
         run_now = False
+        # items = list(range(0, 100)) #List of numbers for counting for progress bar
+        # for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
+        #     sleep(864) #Progress bar fills by 1% every 864 seconds (86400 in a day)
