@@ -51,7 +51,7 @@ class healthBot(object):
         self.browser = browser
         self.browser_options = Options()
         self.browser_options.add_experimental_option("detach", True)  # Make it so the browser doesn't close upon finish
-        self._run(run_now)
+        self._run()
 
     def _run(self):
         """
