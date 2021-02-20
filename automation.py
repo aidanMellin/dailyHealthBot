@@ -13,21 +13,30 @@ def main(run_now):
     '''
     Check if user has already entered their account information. If not, open the pane for entering info, otherwise,
     run automation
-    '''
+    '''    
     credList = []
     with open("secrets.txt","r") as fd:
         if "//" in fd.readline():
                 lf.mainloop()
 
+    if not run_now:
+            for _ in range(60*60*24):  # loop the whole day
+                if dt.datetime.now().hour == 11:  # 24 hour format
+                    print("Running Daily Health Screen")
+                    break
+                else:
+                    print("Not time yet, waiting for 30 minutes before checking again")
+                sleep(60*30)
+
     with open("secrets.txt","r") as fd:
         for line in fd:
             line = line.strip().split()
             credList.append(line[2].replace('"',''))
-        healthBot(credList[0],credList[1],credList[2], run_now)
+        healthBot(credList[0],credList[1],credList[2])
 
 class healthBot(object):
 
-    def __init__(self,username,password,browser, run_now):
+    def __init__(self,username,password,browser):
         """
         init function for overall class establishing base rules for window as well as driver
         :param username:
@@ -44,7 +53,7 @@ class healthBot(object):
         self.browser_options.add_experimental_option("detach", True)  # Make it so the browser doesn't close upon finish
         self._run(run_now)
 
-    def _run(self, run_now):
+    def _run(self):
         """
         Boot the window, and start login (Separated in case I should implement a GUI pane)
         :return:
@@ -52,15 +61,6 @@ class healthBot(object):
         """
         ffOP = None
         #should probably add the time check here. incorporate progress bar as well?
-        
-        if not run_now:
-            for _ in range(60*60*24):  # loop the whole day
-                if dt.datetime.now().hour == 11:  # 24 hour format
-                    print("Running Daily Health Screen")
-                    break
-                else:
-                    print("Not time yet, waiting for 30 minutes before checking again")
-                sleep(60*30)
 
         if self.browser == "Chrome":
             self.driver = webdriver.Chrome(options=self.browser_options)
