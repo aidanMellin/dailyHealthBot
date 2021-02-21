@@ -272,5 +272,5 @@ if __name__ == '__main__':
         items = list(range(0, 100)) #List of numbers for counting for progress bar
         for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 100):
             now = dt.datetime.now()
-            time_sleep = (dt.timedelta(hours=24) - (now - now.replace(hour=8, minute=30, second=0, microsecond=0))).total_seconds() % (24 * 3600)
+            time_sleep = (dt.timedelta(hours=24) - (now - now.replace(hour=8, minute=0, second=0, microsecond=0))).total_seconds() % (24 * 3600)
             sleep(time_sleep/100) #Progress bar fills by 1% every 1/100 of time_sleep
