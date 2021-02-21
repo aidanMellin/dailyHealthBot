@@ -21,7 +21,7 @@ def main(run_now):
 
     if not run_now:
             for _ in range(60*60*24):  # loop the whole day
-                if dt.datetime.now().hour == 11:  # 24 hour format
+                if dt.datetime.now().hour == 8:  # 24 hour format
                     print("Running Daily Health Screen")
                     break
                 else:
@@ -169,14 +169,11 @@ class LoginFrame(Frame):
         "Safari"
         ] 
 
-
-        
         self.dropVar = StringVar(root)
         self.dropVar.set(OptionList[0])
         self.opt = OptionMenu(root, self.dropVar, *OptionList)
         self.opt.config(width=90, font=('Helvetica', 12))
         
-
         self.label_username.grid(row=1, sticky=E)
         self.label_password.grid(row=2, sticky=E)
         self.entry_username.grid(row=1, column=1)
@@ -186,10 +183,8 @@ class LoginFrame(Frame):
 
         self.logbtn = Button(self, text="Login", command=self._login_btn_clicked)
         self.logbtn.grid(row=4, columnspan=2)
-
         self.pack()
         
-
     def cb(self):
         '''
         Checkbutton event to show / hide password
@@ -201,7 +196,6 @@ class LoginFrame(Frame):
         elif self.pShow == "*": #Show the text
             self.pShow = ""
         self.entry_password.config(show=self.pShow) #Configure to show text
-
     
     def _login_btn_clicked(self):
         '''
